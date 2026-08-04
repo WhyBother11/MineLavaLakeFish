@@ -1,0 +1,12 @@
+{
+    "Name": "Mine Lava Lake Fish",
+    "Author": "WhyBother11",
+    "Version": "1.0.0",
+    "Description": "Allows to add custom fish to lava pool at Mine level 100 floor",
+    "UniqueID": "WhyBother11.MineLavaLakeFish",
+    "EntryDll": "MineLavaLakeFish.dll",
+    "MinimumApiVersion": "4.0.0",
+    "UpdateKeys": [
+        "Nexus:50088"
+    ]
+}

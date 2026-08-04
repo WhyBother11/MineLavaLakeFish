@@ -1,0 +1,4 @@
+{
+    "config.option.lava-lake-fish-chance": "Lava lake custom fish chance",
+    "config.option.lava-lake-fish-chance.tooltip": "Chance of executing default fish catch logic for lava lake location.\nThis is checked after the game determines if lava eel or cave jelly should be caught.\n1.0 may result in trash, as actual fish catch logic is still being determined by the game."
+}
