@@ -3,7 +3,7 @@ using StardewModdingAPI.Events;
 using StardewValley;
 using StardewValley.Extensions;
 
-namespace MineLavaLakeFish.Fish;
+namespace MineLavaLakeFish.Framework.Core.Fish;
 
 public static class AddFakeMineLavaLakeLocation
 {

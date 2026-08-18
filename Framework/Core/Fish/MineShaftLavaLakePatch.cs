@@ -1,11 +1,11 @@
 using HarmonyLib;
 using Microsoft.Xna.Framework;
-using MineLavaLakeFish.Data;
+using MineLavaLakeFish.Framework.Data;
 using StardewValley;
 using StardewValley.GameData.Locations;
 using StardewValley.Locations;
 
-namespace MineLavaLakeFish.Fish;
+namespace MineLavaLakeFish.Framework.Core.Fish;
 
 public static class MineShaftLavaLakePatch
 {
@@ -28,15 +28,15 @@ public static class MineShaftLavaLakePatch
     }
 
     /// <summary>
-    /// Replaces caught trash with custom fish logic
+    /// Replaces caught trash with custom fish logic.
     /// </summary>
-    /// <param name="__instance">MineShaft instance</param>
-    /// <param name="millisecondsAfterNibble">See <see cref="GameLocation.getFish"/></param>
-    /// <param name="bait">See <see cref="GameLocation.getFish"/></param>
-    /// <param name="waterDepth">See <see cref="GameLocation.getFish"/></param>
-    /// <param name="who">See <see cref="GameLocation.getFish"/></param>
-    /// <param name="baitPotency">See <see cref="GameLocation.getFish"/></param>
-    /// <param name="bobberTile">See <see cref="GameLocation.getFish"/></param>
+    /// <param name="__instance">MineShaft instance.</param>
+    /// <param name="millisecondsAfterNibble">See <see cref="GameLocation.getFish"/>.</param>
+    /// <param name="bait">See <see cref="GameLocation.getFish"/>.</param>
+    /// <param name="waterDepth">See <see cref="GameLocation.getFish"/>.</param>
+    /// <param name="who">See <see cref="GameLocation.getFish"/>.</param>
+    /// <param name="baitPotency">See <see cref="GameLocation.getFish"/>.</param>
+    /// <param name="bobberTile">See <see cref="GameLocation.getFish"/>.</param>
     /// <param name="__result">Result of MineShaft::getFish</param>
     public static void MineShaft_getFish_Postfix(
         MineShaft __instance,
@@ -58,12 +58,12 @@ public static class MineShaftLavaLakePatch
     /// <summary>
     /// Run custom fish logic if neither lava eel nor cave jelly were caught.
     /// </summary>
-    /// <param name="millisecondsAfterNibble">See <see cref="GameLocation.getFish"/></param>
-    /// <param name="bait">See <see cref="GameLocation.getFish"/></param>
-    /// <param name="waterDepth">See <see cref="GameLocation.getFish"/></param>
-    /// <param name="who">See <see cref="GameLocation.getFish"/></param>
-    /// <param name="baitPotency">See <see cref="GameLocation.getFish"/></param>
-    /// <param name="bobberTile">See <see cref="GameLocation.getFish"/></param>
+    /// <param name="millisecondsAfterNibble">See <see cref="GameLocation.getFish"/>.</param>
+    /// <param name="bait">See <see cref="GameLocation.getFish"/>.</param>
+    /// <param name="waterDepth">See <see cref="GameLocation.getFish"/>.</param>
+    /// <param name="who">See <see cref="GameLocation.getFish"/>.</param>
+    /// <param name="baitPotency">See <see cref="GameLocation.getFish"/>.</param>
+    /// <param name="bobberTile">See <see cref="GameLocation.getFish"/>.</param>
     /// <returns></returns>
     public static Item GetLavaLakeCustomFish(
         float millisecondsAfterNibble,

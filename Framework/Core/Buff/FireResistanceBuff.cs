@@ -1,12 +1,12 @@
 using System.Reflection;
 using System.Reflection.Emit;
 using HarmonyLib;
-using MineLavaLakeFish.HarmonyUtil;
+using MineLavaLakeFish.Framework.HarmonyUtil;
 using StardewValley;
 using StardewValley.Monsters;
 using StardewValley.Projectiles;
 
-namespace MineLavaLakeFish.Buff;
+namespace MineLavaLakeFish.Framework.Core.Buff;
 
 public static class FireResistanceBuff
 {
@@ -45,11 +45,11 @@ public static class FireResistanceBuff
     }
 
     /// <summary>
-    /// Prefix to adjust fire damage from actual monster attacks.
+    /// Prefix to adjust fire damage from direct monster attacks.
     /// </summary>
-    /// <param name="__instance">Farmer instance</param>
-    /// <param name="damage">See <see cref="Farmer.takeDamage"/></param>
-    /// <param name="damager">See <see cref="Farmer.takeDamage"/></param>
+    /// <param name="__instance">Farmer instance.</param>
+    /// <param name="damage">See <see cref="Farmer.takeDamage"/> <c>damage</c>.</param>
+    /// <param name="damager">See <see cref="Farmer.takeDamage"/> <c>damager</c>.</param>
     public static void Farmer_takeDamage_Prefix(
         Farmer __instance,
         ref int damage,
@@ -71,9 +71,9 @@ public static class FireResistanceBuff
     /// <summary>
     /// Prefix to adjust fire damage from projectiles fired by monsters.
     /// </summary>
-    /// <param name="__instance">BasicProjectile instance</param>
-    /// <param name="location">See <see cref="BasicProjectile.behaviorOnCollisionWithPlayer"/></param>
-    /// <param name="player">See <see cref="BasicProjectile.behaviorOnCollisionWithPlayer"/></param>
+    /// <param name="__instance">BasicProjectile instance.</param>
+    /// <param name="location">See <see cref="BasicProjectile.behaviorOnCollisionWithPlayer"/> <c>location</c>.</param>
+    /// <param name="player">See <see cref="BasicProjectile.behaviorOnCollisionWithPlayer"/> <c>player</c>.</param>
     public static void BasicProjectile_behaviorOnCollisionWithPlayer_Prefix(
         BasicProjectile __instance,
         GameLocation location,
@@ -83,7 +83,7 @@ public static class FireResistanceBuff
         {
             if (!player.HasBuff()) return;
             var firer = __instance.theOneWhoFiredMe.Get(location);
-            if (firer is Monster monster && monster is LavaLurk or SquidKid)
+            if (firer is LavaLurk or SquidKid)
             {
                 __instance.damageToFarmer.Set(__instance.damageToFarmer.Value / 2);
             }
@@ -95,10 +95,10 @@ public static class FireResistanceBuff
     }
 
     /// <summary>
-    /// Postfix to remove Burnt debuff
+    /// Postfix to remove Burnt debuff.
     /// </summary>
-    /// <param name="__instance">Bat instance</param>
-    /// <param name="who">See <see cref="Bat.onDealContactDamage"/></param>
+    /// <param name="__instance">Bat instance.</param>
+    /// <param name="who">See <see cref="Bat.onDealContactDamage"/> <c>who</c>.</param>
     public static void Bat_onDealContactDamage_Postfix(
         Bat __instance,
         Farmer who)
@@ -119,8 +119,8 @@ public static class FireResistanceBuff
     /// <summary>
     /// Check if monster is MagmaSprite or MagmaSparker.
     /// </summary>
-    /// <param name="monster">Monster instance</param>
-    /// <returns>Monster is dealing fire damage</returns>
+    /// <param name="monster">Monster instance.</param>
+    /// <returns>Monster is Magma Sprite or Magma Sparker.</returns>
     public static bool IsMagmaSprite(this Monster monster)
     {
         if (monster is Bat bat)
@@ -134,8 +134,8 @@ public static class FireResistanceBuff
     /// <summary>
     /// Patches DinoMonster.BreathProjectile::Update to reduce breath projectile damage to player.
     /// </summary>
-    /// <param name="instructions">Original IL instructions</param>
-    /// <returns>Modified IL instructions</returns>
+    /// <param name="instructions">Original IL instructions.</param>
+    /// <returns>Modified IL instructions.</returns>
     public static IEnumerable<CodeInstruction> DinoMonster_BreathProjectile_Update_Transpiler(IEnumerable<CodeInstruction> instructions)
     {
         try

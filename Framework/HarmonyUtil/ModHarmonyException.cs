@@ -1,4 +1,4 @@
-namespace MineLavaLakeFish.HarmonyUtil;
+namespace MineLavaLakeFish.Framework.HarmonyUtil;
 
 public class ModHarmonyException : Exception
 {

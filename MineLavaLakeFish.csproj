@@ -12,4 +12,8 @@
       <PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="4.4.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Framework\Core\" />
+    </ItemGroup>
+
 </Project>

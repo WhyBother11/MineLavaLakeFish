@@ -3,7 +3,7 @@ using StardewModdingAPI.Events;
 using StardewValley;
 using StardewValley.GameData.Locations;
 
-namespace MineLavaLakeFish.Data;
+namespace MineLavaLakeFish.Framework.Data;
 
 public static class LavaLakeFishDataAsset
 {
@@ -18,17 +18,8 @@ public static class LavaLakeFishDataAsset
     /// <summary>
     /// Stored custom fish data.
     /// </summary>
-    public static Dictionary<string, SpawnFishData> MineLavaLakeFishData
-    {
-        get
-        {
-            if (_data == null)
-            {
-                _data = Game1.content.Load<Dictionary<string, SpawnFishData>>(MineLavaLakeFishAsset);
-            }
-            return _data;
-        }
-    }
+    public static Dictionary<string, SpawnFishData> MineLavaLakeFishData => _data ??=
+        Game1.content.Load<Dictionary<string, SpawnFishData>>(MineLavaLakeFishAsset);
 
     public static void AddEventsForAsset(IModHelper helper)
     {
@@ -40,8 +31,8 @@ public static class LavaLakeFishDataAsset
     /// <summary>
     /// Create base floor 100 <see cref="StardewValley.GameData.Locations.SpawnFishData"/> dictionary.
     /// </summary>
-    /// <param name="sender">Event sender</param>
-    /// <param name="e">Event args, see <see cref="AssetRequestedEventArgs"/></param>
+    /// <param name="sender">Event sender.</param>
+    /// <param name="e">See <see cref="AssetRequestedEventArgs"/>.</param>
     public static void OnAssetRequested(object? sender, AssetRequestedEventArgs e)
     {
         if (e.NameWithoutLocale.IsEquivalentTo(MineLavaLakeFishAsset))
@@ -53,8 +44,8 @@ public static class LavaLakeFishDataAsset
     /// <summary>
     /// Update floor 100 <see cref="StardewValley.GameData.Locations.SpawnFishData"/> dictionary.
     /// </summary>
-    /// <param name="sender">Event sender</param>
-    /// <param name="e">Event args, see <see cref="AssetReadyEventArgs"/></param>
+    /// <param name="sender">Event sender.</param>
+    /// <param name="e">See <see cref="AssetReadyEventArgs"/>.</param>
     public static void OnAssetReady(object? sender, AssetReadyEventArgs e)
     {
         if (e.NameWithoutLocale.IsEquivalentTo(MineLavaLakeFishAsset))
@@ -66,8 +57,8 @@ public static class LavaLakeFishDataAsset
     /// <summary>
     /// Invalidate floor 100 <see cref="StardewValley.GameData.Locations.SpawnFishData"/> dictionary.
     /// </summary>
-    /// <param name="sender">Event sender</param>
-    /// <param name="e">Event args, see <see cref="AssetsInvalidatedEventArgs"/></param>
+    /// <param name="sender">Event sender.</param>
+    /// <param name="e">See <see cref="AssetsInvalidatedEventArgs"/></param>
     public static void OnAssetsInvalidated(object? sender, AssetsInvalidatedEventArgs e)
     {
         foreach (var assetName in e.NamesWithoutLocale)

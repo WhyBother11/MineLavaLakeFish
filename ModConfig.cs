@@ -1,4 +1,4 @@
-namespace MineLavaLakeFish.Config;
+namespace MineLavaLakeFish;
 
 public class ModConfig
 {

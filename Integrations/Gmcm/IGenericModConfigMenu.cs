@@ -1,6 +1,6 @@
 using StardewModdingAPI;
 
-namespace MineLavaLakeFish.Config;
+namespace MineLavaLakeFish.Integrations.Gmcm;
 
 public interface IGenericModConfigMenu
 {

@@ -1,8 +1,8 @@
 using HarmonyLib;
-using MineLavaLakeFish.Buff;
-using MineLavaLakeFish.Config;
-using MineLavaLakeFish.Data;
-using MineLavaLakeFish.Fish;
+using MineLavaLakeFish.Framework.Core.Buff;
+using MineLavaLakeFish.Framework.Core.Fish;
+using MineLavaLakeFish.Framework.Data;
+using MineLavaLakeFish.Integrations.Gmcm;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 
